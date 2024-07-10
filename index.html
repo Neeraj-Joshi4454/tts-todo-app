@@ -18,9 +18,13 @@
       // add Todo
       function addTodo() {
         var todo = window.prompt("Enter the todo");
-        todos.push(todo);
-        console.log(todos);
-        showTodos();
+        if(todo){
+          todos.push(todo);
+          console.log(todos);
+          showTodos();
+        }else{
+          alert('pls enter something')
+        }
       }
 
       // show Todos
