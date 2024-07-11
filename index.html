@@ -1,54 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Todo List (TTS Batch)</h1>
 
-    <ul></ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    /* Space between delete and edit buttons */
+    .button-spacing {
+      margin-left: 16px;
 
-    <button onclick="addTodo()">Add Todo</button>
+    }
 
-    <script>
-      var todos = [];
+    body{
+      background-image: url("nayu.jpg")
+    }
+  </style>
+</head>
 
-      // add Todo
-      function addTodo() {
-        var todo = window.prompt("Enter the todo");
-        if(todo){
-          todos.push(todo);
-          console.log(todos);
-          showTodos();
-        }else{
-          alert('pls enter something')
-        }
-      }
+<body >
 
-      // show Todos
-      function showTodos() {
-        document.querySelector("ul").innerHTML = "";
-        todos.forEach((val, i) => {
-          document.querySelector(
-            "ul"
-          ).innerHTML += `<li>${val}  <button onclick="deleteTodo(${i})">Delete</button></li>`;
+  <h1>Todo List (TTS Batch)</h1>
 
-          console.log(i);
-        });
-      }
+  <ul></ul>
 
-      function deleteTodo(i) {
-        alert(i);
-        delete todos[i];
+  <button onclick="addTodo()">Add Todo</button>
+
+  <script>
+    var todos = [];
+
+    // add Todo
+    function addTodo() {
+      var todo = window.prompt("Enter the todo");
+      if (todo) {
+        todos.push(todo);
         console.log(todos);
         showTodos();
+      } else {
+        alert('Please enter something');
       }
+    }
 
-      function editTodo(){
-        
+    // show Todos
+    function showTodos() {
+      document.querySelector("ul").innerHTML = "";
+      todos.forEach((val, i) => {
+        document.querySelector(
+          "ul"
+        ).innerHTML += `<li>${val} <button onclick="deleteTodo(${i})">Delete</button><button class="button-spacing" onclick="editTodo(${i})">Edit</button></li>`;
+      });
+    }
+
+    function deleteTodo(i) {
+      alert(i);
+      todos.splice(i, 1); // Update to remove the item from the array
+      console.log(todos);
+      showTodos();
+    }
+
+    function editTodo(i) {
+      let todo = prompt("Enter edit Todos");
+      if (todo) {
+        todos[i] = todo;
+        showTodos();
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>
