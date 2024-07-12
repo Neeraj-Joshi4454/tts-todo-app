@@ -11,6 +11,8 @@
     <ul></ul>
 
     <button onclick="addTodo()">Add Todo</button>
+    <audio  id="editSound" src="2.mp3"></audio>
+    <audio  id="deleteSound" src="3.mp3"></audio>
 
     <script>
       var todos = [];
@@ -18,6 +20,7 @@
       // add Todo
       function addTodo() {
         var todo = window.prompt("Enter the todo");
+        playSound('editSound');
         if(todo){
           todos.push(todo);
           console.log(todos);
@@ -41,6 +44,7 @@
 
       function deleteTodo(i) {
         alert(i);
+        playSound('deleteSound');
         delete todos[i];
         console.log(todos);
         showTodos();
@@ -48,6 +52,11 @@
 
       function editTodo(){
         
+      }
+      function playSound (soundId){
+        var sound = document.getElementById(soundId);
+        sound.play();
+
       }
     </script>
   </body>
